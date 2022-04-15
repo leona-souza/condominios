@@ -4,28 +4,34 @@ import { useState, useEffect } from 'react'
 import { DataGrid } from '@mui/x-data-grid'
 
 // SERVICES
-import { getApartamentos } from 'services/ApartamentosService'
+import { getMoradores } from 'services/MoradoresService'
 
 // TYPES
-import { ApartamentoType } from 'types/apartamentos'
+import { MoradorType } from 'types/moradores'
 
 // STYLES
-import * as Styled from './Apartamentos.styles'
+import * as Styled from './Moradores.styles'
 
-const Apartamentos = (): JSX.Element => {
-  const [apartamentos, setApartamentos] = useState<ApartamentoType[]>([])
+const Moradores = (): JSX.Element => {
+  const [moradores, setMoradores] = useState<MoradorType[]>([])
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
     {
-      field: 'numero',
-      headerName: 'Número',
-      type: 'number',
+      field: 'nome',
+      headerName: 'Nome',
+      type: 'string',
       width: 150,
     },
     {
-      field: 'torre',
-      headerName: 'Torre',
-      type: 'number',
+      field: 'documento',
+      headerName: 'Documento',
+      type: 'string',
+      width: 150,
+    },
+    {
+      field: 'telefone',
+      headerName: 'Telefone',
+      type: 'string',
       width: 150,
     },
     {
@@ -37,13 +43,13 @@ const Apartamentos = (): JSX.Element => {
   ]
 
   useEffect(() => {
-    getApartamentos().then(response => setApartamentos(response.data))
+    getMoradores().then(response => setMoradores(response.data))
   }, [])
 
   return (
     <Styled.Container>
       <DataGrid
-        rows={apartamentos}
+        rows={moradores}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
@@ -55,4 +61,4 @@ const Apartamentos = (): JSX.Element => {
   )
 }
 
-export { Apartamentos }
+export { Moradores }

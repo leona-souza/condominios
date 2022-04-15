@@ -12,9 +12,10 @@ const marginRight = css`
 `
 
 export const Container = styled.div`
+  color: ${colors.transparentBlue};
   height: 100vh;
   width: 200px;
-  background-color: ${colors.blue};
+  background-color: ${colors.darkBlue};
 `
 
 export const Option = styled.div`
@@ -26,7 +27,7 @@ export const Option = styled.div`
 
   &:hover {
     cursor: pointer;
-    background-color: ${colors.transparentBlue}
+    background-color: ${colors.blue}
   }
 `
 export const Apartment = styled(ApartmentIcon)`
