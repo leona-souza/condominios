@@ -9,36 +9,40 @@ import { getMoradores } from 'services/MoradoresService'
 // TYPES
 import { MoradorType } from 'types/moradores'
 
+// CONSTANTS
+import { gridConfig } from 'constants/constants'
+
 // STYLES
 import * as Styled from './Moradores.styles'
 
 const Moradores = (): JSX.Element => {
   const [moradores, setMoradores] = useState<MoradorType[]>([])
   const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
     {
+      field: 'id',
+      headerName: 'ID',
+      type: 'number',
+      width: 100
+    }, {
       field: 'nome',
       headerName: 'Nome',
       type: 'string',
-      width: 150,
-    },
-    {
+      width: 250,
+    }, {
       field: 'documento',
       headerName: 'Documento',
       type: 'string',
       width: 150,
-    },
-    {
+    }, {
       field: 'telefone',
       headerName: 'Telefone',
       type: 'string',
       width: 150,
-    },
-    {
+    }, {
       field: 'obs',
       headerName: 'Observação',
       type: 'string',
-      width: 110,
+      width: 300,
     }
   ]
 
@@ -51,9 +55,8 @@ const Moradores = (): JSX.Element => {
       <DataGrid
         rows={moradores}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
+        pageSize={gridConfig.pageSize}
+        rowsPerPageOptions={gridConfig.rowsPerPageOptions}
         disableSelectionOnClick
         autoHeight
       />

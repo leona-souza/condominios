@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { colors } from 'constants/colors'
+import { colors } from 'constants/constants'
 
 import ApartmentIcon from '@mui/icons-material/Apartment'
 import PersonIcon from '@mui/icons-material/Person'

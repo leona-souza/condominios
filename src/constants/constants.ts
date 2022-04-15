@@ -5,3 +5,8 @@ export const colors = {
   transparentBlue: "#f1faee",
   lightRed: "#e63946"
 }
+
+export const gridConfig = {
+  pageSize: 5,
+  rowsPerPageOptions: [5]
+}
