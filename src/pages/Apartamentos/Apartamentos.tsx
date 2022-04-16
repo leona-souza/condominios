@@ -20,13 +20,11 @@ import {
 import { ApartamentoType } from 'types/apartamentos'
 
 // CONSTANTS
-import {
-  colors,
-  gridConfig
-} from 'constants/constants'
+import { gridConfig } from 'constants/constants'
 
 // STYLES
 import * as Styled from './Apartamentos.styles'
+import * as GeneralStyle from 'styles/generalStyles'
 
 const Apartamentos = (): JSX.Element => {
   const [apartamentos, setApartamentos] = useState<ApartamentoType[]>([])
@@ -62,7 +60,7 @@ const Apartamentos = (): JSX.Element => {
         <GridActionsCellItem
           icon={
             <Tooltip title="Editar">
-              <Styled.EditIcon />
+              <GeneralStyle.EditIcon />
             </Tooltip>
           }
           label="Editar"
@@ -71,7 +69,7 @@ const Apartamentos = (): JSX.Element => {
         <GridActionsCellItem
           icon={
             <Tooltip title="Deletar">
-              <Styled.DeleteRedIcon />
+              <GeneralStyle.DeleteRedIcon />
             </Tooltip>
         }
           label="Delete"
@@ -94,15 +92,7 @@ const Apartamentos = (): JSX.Element => {
         rowsPerPageOptions={gridConfig.rowsPerPageOptions}
         disableSelectionOnClick
         autoHeight
-        sx={{
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.darkBlue,
-            color: colors.white
-          },
-          "& .MuiDataGrid-footerContainer": {
-            backgroundColor: colors.footerBlue
-          },
-        }}
+        sx={GeneralStyle.dataGridStyle}
       />
     </Styled.Container>
   )

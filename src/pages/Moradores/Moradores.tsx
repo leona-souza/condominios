@@ -1,10 +1,19 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // COMPONENTS
-import { DataGrid } from '@mui/x-data-grid'
+import {
+  DataGrid,
+  GridActionsCellItem,
+  GridRowParams
+} from '@mui/x-data-grid'
+import { Tooltip } from '@mui/material'
 
 // SERVICES
-import { getMoradores } from 'services/MoradoresService'
+import {
+  getMoradores,
+  deleteMorador
+} from 'services/MoradoresService'
 
 // TYPES
 import { MoradorType } from 'types/moradores'
@@ -14,9 +23,12 @@ import { gridConfig } from 'constants/constants'
 
 // STYLES
 import * as Styled from './Moradores.styles'
+import * as GeneralStyle from 'styles/generalStyles'
 
 const Moradores = (): JSX.Element => {
   const [moradores, setMoradores] = useState<MoradorType[]>([])
+  const navigate = useNavigate()
+
   const columns = [
     {
       field: 'id',
@@ -43,6 +55,31 @@ const Moradores = (): JSX.Element => {
       headerName: 'Observação',
       type: 'string',
       width: 300,
+    }, {
+      field: 'actions',
+      headerName: 'Ações',
+      type: 'actions',
+      width: 100,
+      getActions: (params: GridRowParams) => [
+        <GridActionsCellItem
+          icon={
+            <Tooltip title="Editar">
+              <GeneralStyle.EditIcon />
+            </Tooltip>
+          }
+          label="Editar"
+          onClick={() => navigate(`/moradores/editar/${params.id}`)}
+        />,
+        <GridActionsCellItem
+          icon={
+            <Tooltip title="Deletar">
+              <GeneralStyle.DeleteRedIcon />
+            </Tooltip>
+        }
+          label="Delete"
+          onClick={() => deleteMorador(Number(params.id))}
+        />,
+      ]
     }
   ]
 
@@ -59,6 +96,7 @@ const Moradores = (): JSX.Element => {
         rowsPerPageOptions={gridConfig.rowsPerPageOptions}
         disableSelectionOnClick
         autoHeight
+        sx={GeneralStyle.dataGridStyle}
       />
     </Styled.Container>
   )
