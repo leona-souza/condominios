@@ -6,6 +6,10 @@ export const getApartamentos = (): Promise<GetApartamentosResponse> => {
   return axios.get(`${API_URL}/apartamento`)
 }
 
+export const deleteApartamento = (apartamentoId: number): Promise<any> => {
+  return axios.delete(`${API_URL}/apartamento/${apartamentoId}`)
+}
+
 /* getObjectsPaginados: function(pagina, tipo) {
   return axios.get(tipo + `?pagina=${pagina}&limite=${LIMITE}`);
 },
