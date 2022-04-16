@@ -6,3 +6,9 @@ export interface VeiculoType {
   cor?: string;
   obs?: string;
 }
+
+export interface GetVeiculosResponse {
+  data: VeiculoType[];
+  status: number;
+  statusText: string;
+}

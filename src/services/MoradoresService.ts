@@ -1,7 +1,11 @@
 import axios from 'axios'
+
+// TYPES
+import { GetMoradoresResponse } from 'types/moradores'
+
 const API_URL = process.env.REACT_APP_API_URL
 
-export const getMoradores = (): Promise<any> => {
+export const getMoradores = (): Promise<GetMoradoresResponse> => {
   return axios.get(`${API_URL}/morador`)
 }
 
