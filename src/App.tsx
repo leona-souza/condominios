@@ -8,6 +8,7 @@ import { Apartamentos } from 'pages/Apartamentos'
 import { Moradores } from 'pages/Moradores'
 import { Veiculos } from 'pages/Veiculos'
 import { Visitantes } from 'pages/Visitantes'
+import { Visitas } from 'pages/Visitas'
 
 import * as Styled from "./App.styles"
 
@@ -26,6 +27,7 @@ function App() {
             <Route path={'/moradores'} element={<Moradores />} />
             <Route path={'/veiculos'} element={<Veiculos />} />
             <Route path={'/visitantes'} element={<Visitantes />} />
+            <Route path={'/visitas'} element={<Visitas />} />
 
             {/* FORMULARIOS */}
             <Route path={'/apartamentos/editar/:id'} element={<Apartamentos />} />
